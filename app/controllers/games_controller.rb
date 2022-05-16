@@ -16,7 +16,7 @@ class GamesController < ApplicationController
     @word = params[:word].downcase
     @included = included?(@letters, @word)
     @is_word = is_word?(@word)
-    @score = count_score(@word)
+    @score = count_score(@word, params[:time])
   end
 
   private
@@ -37,6 +37,7 @@ class GamesController < ApplicationController
   end
 
   def count_score(word)
-    word.size
+    number_of_letters = word.size
+    number_of_letters
   end
 end
