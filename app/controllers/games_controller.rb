@@ -16,7 +16,8 @@ class GamesController < ApplicationController
     @word = params[:word].downcase
     @included = included?(@letters, @word)
     @is_word = is_word?(@word)
-    @score = count_score(@word, params[:time])
+    @score = count_score(@word) if @is_word && @included
+    @score = 0 unless @is_word
   end
 
   private
