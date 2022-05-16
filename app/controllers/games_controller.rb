@@ -16,6 +16,7 @@ class GamesController < ApplicationController
     @word = params[:word].downcase
     @included = included?(@letters, @word)
     @is_word = is_word?(@word)
+    @score = count_score(@word)
   end
 
   private
@@ -33,5 +34,9 @@ class GamesController < ApplicationController
     uri = URI.open("https://wagon-dictionary.herokuapp.com/#{word}")
     check = JSON.parse(uri.read)
     check['found']
+  end
+
+  def count_score(word)
+    word.size
   end
 end
